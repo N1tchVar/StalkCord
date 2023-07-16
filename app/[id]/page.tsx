@@ -50,14 +50,22 @@ export default function UserId({params}: {params: {id: number} }) {
       </motion.div>
 
       {userData && userData?.data ? (
-        <div className="flex justify-center items-center min-h-screen">
+        <motion.div 
+          variants={{
+            hidden: {opacity: 0},
+            visible: {opacity: 1},
+          }}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.2, delay: 0.25 }}
+        className="flex justify-center items-center min-h-screen">
           <div className="flex flex-col justify-center items-center w-full mx-auto px-8 md:px-0 space-y-4 md:w-4/12 2xl:w-3/12">
             <div className="flex items-center gap-2">
               {userData.data.discord_user && userData.data.discord_user.avatar ? (
                 <img
                   src={`https://cdn.discordapp.com/avatars/${userData.data.discord_user.id}/${userData.data.discord_user.avatar}.png`}
                   alt="User Avatar"
-                  className="rounded-full w-20 h-20"
+                  className="rounded-full w-20 h-20 opacity-100"
                 />
               ) : (
                 ""
@@ -70,7 +78,7 @@ export default function UserId({params}: {params: {id: number} }) {
               )}
             </div>
             {userData.data.spotify && userData.data.spotify.album_art_url && userData.data.spotify.track_id && userData.data.spotify.artist && userData.data.spotify.song && userData.data.spotify.album ? (
-              <div className="rounded-lg  flex flex-row gap-2 space-y-4 backdrop-blur-md bg-white/5 p-4 overflow-x-hidden">
+              <div className="rounded-lg flex flex-row gap-2 space-y-4 backdrop-blur-md bg-white/5 p-4 overflow-x-hidden">
                 <div className="flex-shrink-0 relative">
                 <img
                   src={`${userData.data.spotify.album_art_url}`}
@@ -87,11 +95,13 @@ export default function UserId({params}: {params: {id: number} }) {
                   <h2 className="opacity-90">{userData.data.spotify.album}</h2>
                 </div>
               </div>
+              
             ) : (
               ""
             )}
+            <Link className='border-2 text-sm text-white/50 border-white/5 p-2 bg-white/5 rounded-lg  hover:border-white/20 duration-100' href={'/'} >Back to the Future</Link>
           </div>
-        </div>
+        </motion.div>
       ) : (
         ""
       )}

@@ -31,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <div className='min-h-screen text-white'>
+    <div className='min-h-screen text-white p-4'>
       <motion.div className='flex justify-center  items-center absolute -z-1 overflow-hidden pointer-events-none inset-0 place-items-center'
                   variants={{
                     hidden: {opacity: 0},
