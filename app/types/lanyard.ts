@@ -3,7 +3,7 @@
     data: LanyardData
     spotify: Spotify | null
     discord_user: Discorduser
-    discord_status: "online" | "dnd" | "offline" | "idle"
+    discord_status: "online" | "offline" | "idle"
     activities: Activity[]
     listening_to_spotify: boolean
     active_on_discord_mobile: boolean
