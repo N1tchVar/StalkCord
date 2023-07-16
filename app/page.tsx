@@ -18,7 +18,7 @@ export default function Home() {
   const handleSubmit = (e :any) => {
     e.preventDefault();
 
-    if (userId.length === 18, 19) {
+    if (userId.length === 18 || userId.length === 19) {
       router.push(`/${userId}`);
     } else {
       toast.error('Invalid Discord User ID')
@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value // Only allow up to 19 characters
+    const value = e.target.value.slice() // Only allow up to 19 characters
     setUserId(value);
   };
 

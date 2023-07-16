@@ -46,12 +46,12 @@ export default function UserId({params}: {params: {id: number} }) {
         animate="visible"
         transition={{ duration: 0.2, delay: 0.25 }}
       >
-        <Image src={circle} alt="" width={2000} height={100} />
+        <Image src={circle} alt="" width={2000} height={100}  />
       </motion.div>
 
       {userData && userData?.data ? (
         <div className="flex justify-center items-center min-h-screen">
-          <div className="flex justify-center items-center w-full mx-auto px-8 md:px-0 space-y-4 md:w-4/12 2xl:w-3/12">
+          <div className="flex flex-col justify-center items-center w-full mx-auto px-8 md:px-0 space-y-4 md:w-4/12 2xl:w-3/12">
             <div className="flex items-center gap-2">
               {userData.data.discord_user && userData.data.discord_user.avatar ? (
                 <img
@@ -69,9 +69,23 @@ export default function UserId({params}: {params: {id: number} }) {
                 ""
               )}
             </div>
-            {userData.data.spotify && userData.data.spotify.album_art_url && userData.data.spotify.artist && userData.data.spotify.song && userData.data.spotify.album ? (
-              <div>
-
+            {userData.data.spotify && userData.data.spotify.album_art_url && userData.data.spotify.track_id && userData.data.spotify.artist && userData.data.spotify.song && userData.data.spotify.album ? (
+              <div className="rounded-lg  flex flex-row gap-2 space-y-4 backdrop-blur-md bg-white/5 p-4 overflow-x-hidden">
+                <div className="flex-shrink-0 relative">
+                <img
+                  src={`${userData.data.spotify.album_art_url}`}
+                  alt="Album Icon"
+                  className="rounded-xl h-28 w-28"
+                />
+                </div>
+                <div className="space-y-px">
+                  <Link href={`https://open.spotify.com/track/${userData.data.spotify.track_id}`}
+                   className="cursor-pointer font-semibold text-lg leading-tight truncate hover:underline" title="Open on Spotify" target="_blank">
+                    {userData.data.spotify.song}
+                  </Link>
+                  <h2 className="opacity-90">{userData.data.spotify.artist}</h2>
+                  <h2 className="opacity-90">{userData.data.spotify.album}</h2>
+                </div>
               </div>
             ) : (
               ""
