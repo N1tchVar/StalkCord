@@ -31,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <div className='min-h-screen text-white p-4'>
+    <div className='min-h-screen text-white'>
       <motion.div className='flex justify-center  items-center absolute -z-1 overflow-hidden pointer-events-none inset-0 place-items-center'
                   variants={{
                     hidden: {opacity: 0},
@@ -48,7 +48,7 @@ export default function Home() {
           height={100}
           />
         </motion.div>
-      <div className='flex flex-col justify-center items-center gap-4 h-screen'>
+      <div className='flex flex-col justify-center items-center gap-4 p-4 h-screen overflow-hidden'>
         <motion.div
           className='flex flex-col justify-center items-center w-full'
           variants={{
