@@ -60,7 +60,7 @@ export default function UserId({params}: {params: {id: number} }) {
           transition={{ duration: 0.2, delay: 0.25 }}
         className="flex justify-center items-center min-h-screen">
           <div className="flex flex-col justify-center items-center w-full mx-auto px-8 md:px-0 space-y-4 md:w-4/12 2xl:w-3/12">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-4 relative">
               {userData.data.discord_user && userData.data.discord_user.avatar ? (
                 <img
                   src={`https://cdn.discordapp.com/avatars/${userData.data.discord_user.id}/${userData.data.discord_user.avatar}.png`}
@@ -70,13 +70,31 @@ export default function UserId({params}: {params: {id: number} }) {
               ) : (
                 ""
               )}
+              <div className={`w-6 h-6 rounded-full absolute left-16 bottom-2 >
 
+           ${
+             userData.data.discord_status === "online"
+               ? "bg-green-500"
+               : userData.data.discord_status === "dnd"
+               ? "bg-red-500"
+               : userData.data.discord_status === "idle"
+               ? "bg-yellow-500"
+               : "bg-gray-500"
+           }`} >
+              </div>
               {userData.data.discord_user && userData.data.discord_user.username && userData.data.discord_user.avatar ? (
                 <h1 className="text-white text-2xl">{userData.data.discord_user.username}</h1>
               ) : (
                 ""
               )}
             </div>
+            {userData.data.activities && userData.data.activities[0] && userData.data.activities[0].state && userData.data.activities[0].emoji && userData.data.activities[0].emoji.name ? (
+              <div>
+                {userData.data.activities[0].emoji.name} {userData.data.activities[0].state}
+              </div>
+            ) : (
+              <p>{userData.data.activities[0].state}</p>
+            )}
             {userData.data.spotify && userData.data.spotify.album_art_url && userData.data.spotify.track_id && userData.data.spotify.artist && userData.data.spotify.song && userData.data.spotify.album ? (
               <div className="rounded-lg flex flex-row gap-2 space-y-4 backdrop-blur-md bg-white/5 p-4 overflow-x-hidden">
                 <div className="flex-shrink-0 relative">
@@ -95,9 +113,10 @@ export default function UserId({params}: {params: {id: number} }) {
                   <h2 className="opacity-90">{userData.data.spotify.album}</h2>
                 </div>
               </div>
-              
             ) : (
-              ""
+              <div className="rounded-lg flex flex-row gap-2 space-y-4 backdrop-blur-md bg-white/5 p-4 overflow-x-hidden text-center">
+                User doesn't listens to anything 😭
+                </div>
             )}
             <Link className='border-2 text-sm text-white/50 border-white/5 p-2 bg-white/5 rounded-lg  hover:border-white/20 duration-100' href={'/'} >Back to the Future</Link>
           </div>
