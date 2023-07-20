@@ -115,7 +115,7 @@ export default function UserId({params}: {params: {id: number} }) {
               </div>
             ) : (
               <div className="rounded-lg flex flex-row gap-2 space-y-4 backdrop-blur-md bg-white/5 p-4 overflow-x-hidden text-center">
-                User doesn't listens to anything 😭
+                User doesn&apos;t listens to anything 😭
                 </div>
             )}
             <Link className='border-2 text-sm text-white/50 border-white/5 p-2 bg-white/5 rounded-lg  hover:border-white/20 duration-100' href={'/'} >Back to the Future</Link>
