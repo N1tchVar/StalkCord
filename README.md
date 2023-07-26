@@ -1,4 +1,4 @@
-# Stalkcord v0.1 ✨🔍
+# Stalkcord v0.2 ✨🔍
 
 <a href="https://stalk-cord.vercel.app/"><img src="https://imgtr.ee/images/2023/07/16/853d6b58c99809d3bb41fe08ef5da8bd.png" alt="853d6b58c99809d3bb41fe08ef5da8bd.png" border="0" /></a>
 
